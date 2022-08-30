@@ -19,15 +19,7 @@ def separate(somelist):
                 imaginary.append(str(1))
         else:
             real.append(expression)
-    return [real, imaginary]
-
-def returntwo():
-    number1 = 1
-    number2 = 2
-    return number1, number2
-
-
-
+    return real, imaginary
 
 def transform(pretrans):
     newstring = ""
@@ -153,7 +145,7 @@ def Write_graph(somelist, filename, title):
 
 
 def instructions():
-    print("\n -g <graph>")
+    print("\n -g to enter main function of program, no argument afterwards")
     print("Anything being multiplied must be separated by * EX: ab must be a*b")
     print("Can use a,b for polynomials, and imaginary numbers can be represented by i")
     print("You can select aspects of graph once graph is parsed")
@@ -199,6 +191,30 @@ def printmenu():
     print("[6] print menu")
     print("[q] to quit\n")
 
+def rootsofunity(fraction):
+    a_splitlist = angletransform(gfg_exp, int(fraction))
+    x = input("enter state of rotation between 1 - " + str(int(fraction)) + ": ")
+    while x != 'q':
+        if x.isdigit() and (0 < int(x) <= int(fraction)):
+            if int(x) == int(fraction):
+                print("input is equivalent to original graph")
+            else:
+                anglegraph = split(a_splitlist[int(x) - 1])
+                rewrite_imaginary(anglegraph)
+                print(anglegraph)
+                r_angle, i_angle = separate(anglegraph)
+                import_libraries("myfile.py")
+                Write_graph(r_angle, "myfile.py", "Real Rotated by a factor of " + x + "/" + fraction)
+                showplot("myfile.py")
+
+                import_libraries("other.py")
+                Write_graph(i_angle, "other.py", "Imaginary Rotated by a factor of " + x + "/" + fraction)
+                showplot("other.py")
+        x = input("enter state of rotation between 1 - " + str(int(fraction)) + " (q to exit to menu): ")
+
+
+def menuoptions():
+    printmenu()
     condition = input("enter input: ")
 
     while condition != "q":
@@ -220,41 +236,10 @@ def printmenu():
             showplot("myfile.py")
         elif condition == "5":
             fraction = input("Select fraction of rotation: ")
-            a_splitlist = angletransform(gfg_exp, int(fraction))
-            x = input("enter state of rotation between 1 - " + str(int(fraction)) + ": ")
-            while x != 'q':
-                if x.isdigit() and (0 < int(x) <= int(fraction)):
-                    if int(x) == int(fraction):
-                        print("input is equivalent to original graph")
-                    else:
-                        anglegraph = split(a_splitlist[int(x)-1])
-                        rewrite_imaginary(anglegraph)
-                        print(anglegraph)
-                        r_angle, i_angle = separate(anglegraph)
-                        import_libraries("myfile.py")
-                        Write_graph(r_angle, "myfile.py", "Real Rotated by a factor of " + x + "/" + fraction)
-                        showplot("myfile.py")
-
-                        import_libraries("other.py")
-                        Write_graph(i_angle, "other.py", "Imaginary Rotated by a factor of " + x + "/" + fraction)
-                        showplot("other.py")
-
-                x = input("enter state of rotation between 1 - " + str(int(fraction)) + ": ")
-            print("\n[1] for original real part:")
-            print("[2] for original imaginary part:")
-            print("[3] for transformed real part:")
-            print("[4] for transformed imaginary part:")
-            print("[5] roots of unity rotation")
-            print("[6] print menu")
-            print("[q] to quit\n")
-
+            rootsofunity(fraction)
+            printmenu()
         elif condition == "6":
-            print("\n[1] for original real part:")
-            print("[2] for original imaginary part:")
-            print("[3] for transformed real part:")
-            print("[4] for transformed imaginary part:")
-            print("[5] roots of unity rotation")
-            print("[6] print menu")
+            printmenu()
         elif condition == "q":
             exit(1)
         else:
@@ -287,4 +272,4 @@ print("og-imaginarypart: " + str(imaginarylist))
 print("transformed-realpart " + str(t_realist))
 print("transformed-imaginarypart " + str(t_imaginarylist))
 
-printmenu()
+menuoptions()
