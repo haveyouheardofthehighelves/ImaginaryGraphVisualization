@@ -1,4 +1,3 @@
-import sympy
 from sympy import symbols, preorder_traversal, Float
 import re
 import sys
@@ -20,6 +19,7 @@ def separate(somelist):
         else:
             real.append(expression)
     return real, imaginary
+
 
 def transform(pretrans):
     newstring = ""
@@ -53,12 +53,13 @@ def angletransform(pretrans, oor):
         tangle += angle
     return expressionlist
 
-#a^4 = a(cos0+isin0)^4
-#factor of rotation = 4
-#angle = 2pi/4 = pi/2
-#pi/2, pi, 3pi/2, 2pi
 
-#what gets preserved during these sitautions and why?
+# a^4 = a(cos0+isin0)^4
+# factor of rotation = 4
+# angle = 2pi/4 = pi/2
+# pi/2, pi, 3pi/2, 2pi
+
+# what gets preserved during these sitautions and why?
 
 def rewrite_imaginary(someList):
     for expression in someList:
@@ -167,7 +168,7 @@ def split(somestring):
         exit(1)
 
     ex = str(ex)
-    #print(ex)
+    # print(ex)
     ostring = ""
     for i in range(len(ex)):
         if ex[i] == '-' and i != 0:
@@ -182,6 +183,7 @@ def split(somestring):
     returnlist = ostring.split('+')
     return returnlist
 
+
 def printmenu():
     print("\n[1] for original real part:")
     print("[2] for original imaginary part:")
@@ -190,6 +192,7 @@ def printmenu():
     print("[5] roots of unity rotation")
     print("[6] print menu")
     print("[q] to quit\n")
+
 
 def rootsofunity(fraction):
     a_splitlist = angletransform(gfg_exp, int(fraction))
@@ -250,14 +253,12 @@ def menuoptions():
 x, y, z = symbols('a b i')
 
 if len(sys.argv) >= 2:
-    if sys.argv[1] == "-g":
-        gfg_exp = input("Enter a expression: ")
-    elif sys.argv[1] == "-h":
+    if sys.argv[1] == "-h":
         instructions()
         exit(1)
 else:
-    print("no argument specified")
-    exit(1)
+    gfg_exp = input("Enter a expression: ")
+
 
 splitlist = split(gfg_exp)
 
