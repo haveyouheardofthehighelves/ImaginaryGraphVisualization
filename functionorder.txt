@@ -1,0 +1,20 @@
+Parsing i:
+transform()
+split()
+rewriteimaginary()  
+seperate()
+
+dealing with other roots:
+root of unity()
+	- angle transform()
+
+writing to python file for graph:
+importlibraries()
+writegraph()
+showplot()
+
+Userinteraction:
+menuoptions()
+	- printmenu()
+instructions
+

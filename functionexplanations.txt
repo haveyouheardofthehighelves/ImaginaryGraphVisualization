@@ -1,0 +1,39 @@
+functions: 
+separate(list) "'" takes in list as a parameter and splits the list into its imaginary and real components. 
+For instance, [a^2, 2*a*i, b^2] would return [a^2, b^2], [2a] i is already implied in second array and is therefore not needed."'"
+
+split(list): "'"given an expression, terms are split based on + sign to be added again later, this is so we can focus on each term individually"'
+rewrite_imaginary(list) "'" rewriting powers of i in terms to the simplest power, this is too make data more digestable as well as allowing for easier extraction
+				    Ex: i^3, i^7,... i^4n +3 = -i
+				    i^2, i^6, i^10... i^ 4n+2 = -1
+				    i^4 , i^8, i^12... i^4n = 1
+				    i, i^5, i^9...i^4n+1  = i "'"
+
+separate(list): "'"takes in list as a parameter and splits the list into its imaginary and real components. 
+				 For instance, [a^2, 2*a*i, b^2] would return [a^2, b^2], [2a] i is already implied in second array and is therefore not needed."'"
+	
+transform(pretrans) "'"transforms f(x) => f(ix) by taking every instance of a and b and muliplying it by i. Example: a^2 + 2ai + b^2 becomes (ai)^2 + 2(ai)i + (bi)^2"'"
+
+importlibraries(string)
+	"'"writes libraries needed to graph into given python file (numpy and matplotlib)"'" 
+Write_graph(list, string, string)
+	"'"takes in list and pyhton file, the list contains 1 term per index, terms are concatinated and graphed in seperate python file."'"
+showplot(string)
+	"'"enables plot to be shown, and executes seperate python file"'" 
+
+rootsofunity(string)
+	"'"after specifying root of unity, you can choose between states of rotation to see graphical images of transformed graphs for each interval "'"
+
+angletransform(pretrans, oor)
+	"'"given a root of unity and expression, angletransform calculates each transformed expression per root of unity interval, and return and array "'"
+
+menuoptions()
+	"'"enables user to interact with all features of application"'"
+printmenu()
+	"'"function to print menu"'"
+instructions()
+	''"prints instructions if -h argument used, or graph input incorrect"'"
+
+
+
+	
