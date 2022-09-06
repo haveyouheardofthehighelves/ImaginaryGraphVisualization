@@ -1,0 +1,16 @@
+how client interacts with it:
+no argument specifed: Asks to input a function with polynomials a b and i
+argument -h: Prints dialogue and informs client on how to use program
+
+
+Options:
+After inputting graph: 
+1: 3d Visual representation of real part
+2: 3d Visual representation of imaginary part
+3: 3d Visual representation of transformed function (real part) via f(x) => f(ix) x = a,b
+4: 3d Visual representation of transformed function (imaginary part) via f(x) => f(ix) x = a,b
+5: Root of unity transformation based on fraction of rotation
+	- once inputted, 2d array is made of all instances of graph for each cycle
+		- user is then prompted to select one of states of the graph between 1 to F.O.R 
+6: print options
+q: quit program 
